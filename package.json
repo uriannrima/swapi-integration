@@ -5,12 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon index.js",
-    "test:all": "mocha --recursive **/*.spec.js",
-    "test": "mocha --recursive"
+    "test:all": "mocha --exit --recursive **/*.spec.js",
+    "test": "mocha --exit --recursive"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "mongoose": "^5.2.7",
     "node-fetch": "^2.2.0"
   },
   "devDependencies": {

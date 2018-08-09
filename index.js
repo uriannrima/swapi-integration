@@ -1,5 +1,8 @@
 const app = require('./app');
 
+// Configure mongoose
+require('./config/mongoose')();
+
 // Controllers
 require('./controllers')(app);
 
