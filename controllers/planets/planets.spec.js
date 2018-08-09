@@ -30,7 +30,7 @@ describe('Planets controller', () => {
   };
 
   const mockPlanet = {
-    name: 'Planet XPTO',
+    name: 'Alderaan',
     climate: ['arid', 'temparetae'],
     terrain: ["desert"]
   };
@@ -42,19 +42,30 @@ describe('Planets controller', () => {
       .expect(200, done)
   })
 
-  it('should create new planets', (done) => {
+  it('should create new planets with SWAPI Url', (done) => {
     request(app)
       .post('/planets')
       .send(mockPlanet)
       .set('Accept', 'application/json')
-      .expect(200, done)
-  })
+      .expect(200)
+      .then(response => {
+        expect(response.body).to.have.property('swapiUrl').not.be.empty;
+      })
+      .then(done)
+      .catch(done)
+  }).timeout(2500)
 
-  it('should list planets', (done) => {
+  it('should list planets with total appearances', (done) => {
     request(app)
       .get('/planets')
-      .expect(200, done)
-  })
+      .expect(200)
+      .then(response => {
+        expect(response.body).to.be.like([mockPlanet]);
+        expect(response.body[0]).to.have.property('appearances').not.equal(0);
+      })
+      .then(done)
+      .catch(done)
+  }).timeout(2500)
 
   describe('should filter planets', () => {
     it('by valid name', (done) => {
