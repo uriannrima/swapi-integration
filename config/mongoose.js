@@ -12,5 +12,7 @@ module.exports = function () {
   mongoose.Promise = global.Promise;
 
   var db = mongoose.connection;
+  
+  /*eslint-disable-next-line no-console */
   db.on('error', console.error.bind(console, 'MongoDB Connection Error:'));
 }

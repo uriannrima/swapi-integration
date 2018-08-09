@@ -1,8 +1,5 @@
 const PlanetModel = require('../../mongoose/models/planet');
 
-// Temporary Planets
-var planets = [];
-
 exports.list = async function (filter) {
   filter = filter || {};
   return await PlanetModel.find(filter).lean();

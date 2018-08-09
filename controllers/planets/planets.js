@@ -1,5 +1,5 @@
 const express = require('express')
-const SWAPI = require('../../services/swapi');
+const SWAPI = require('../../services/swapi')
 
 module.exports = function (app, repository) {
   const router = express.Router()
@@ -33,7 +33,6 @@ module.exports = function (app, repository) {
       if (error.message === 'Not found') {
         res.sendStatus(404);
       } else {
-        console.log(error);
         res.sendStatus(500);
       }
     }
@@ -47,7 +46,6 @@ module.exports = function (app, repository) {
       const createdPlanet = await repository.create(planet);
       res.json(createdPlanet);
     } catch (error) {
-      console.log(error);
       res.sendStatus(500);
     }
   })
@@ -60,7 +58,6 @@ module.exports = function (app, repository) {
       if (error.message === 'Not found') {
         res.sendStatus(404);
       } else {
-        console.log(error);
         res.sendStatus(500);
       }
     }

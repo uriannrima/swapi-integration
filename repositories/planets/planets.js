@@ -35,6 +35,6 @@ class PlanetsReposity {
       throw error;
     }
   }
-};
+}
 
 module.exports = PlanetsReposity;

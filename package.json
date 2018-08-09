@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon index.js",
     "test:all": "mocha --exit --recursive **/*.spec.js",
-    "test": "mocha --exit --recursive"
+    "test": "mocha --exit --recursive",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -18,6 +20,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-like": "^1.1.1",
+    "eslint": "^5.3.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.3",
     "supertest": "^3.1.0"

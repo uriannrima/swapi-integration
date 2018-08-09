@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const fetch = require('node-fetch')
 
 class SWAPI {
   constructor({ url } = {}) {
@@ -6,9 +6,9 @@ class SWAPI {
   }
 
   status() {
-    return fetch(this.url).then(response => {
+    return fetch(this.url).then(() => {
       return 'OK'
-    }).catch(reason => {
+    }).catch(() => {
       return 'Fail'
     })
   }
@@ -42,6 +42,6 @@ class SWAPI {
 
     return '';
   }
-};
+}
 
 module.exports = new SWAPI();
