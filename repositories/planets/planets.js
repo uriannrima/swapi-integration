@@ -4,9 +4,9 @@ class PlanetsReposity {
     this.model = model;
   }
 
-  async find(filter) {
+  async findById(id) {
     try {
-      return await this.model.find(filter);
+      return await this.model.findById(id);
     } catch (error) {
       throw error;
     }

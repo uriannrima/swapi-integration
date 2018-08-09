@@ -78,7 +78,7 @@ describe('Planets controller', () => {
     })
   })
 
-  it('should list planets by id', (done) => {
+  it('should find planet by id', (done) => {
     request(app)
       .get('/planets/0')
       .expect(200)

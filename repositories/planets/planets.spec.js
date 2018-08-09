@@ -7,7 +7,7 @@ describe('Planets reposity', () => {
 
   const fakeModel = {
     planets: [],
-    async find() {
+    async findById(id) {
       const planet = this.planets.find(planet => planet._id.toString() === id);
       if (!planet) throw Error('Not found');
       return planet;
@@ -57,6 +57,11 @@ describe('Planets reposity', () => {
       const planets = await repository.list({ name: 'rock' });
       expect(planets).to.be.empty;
     })
+  })
+
+  it('should find planet by id', async () => {
+    const planet = await repository.findById('0');
+    expect(planet).to.be.like(mockPlanet);
   })
 
   it('should delete existing planets', async () => {

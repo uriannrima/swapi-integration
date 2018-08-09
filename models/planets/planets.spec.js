@@ -1,4 +1,6 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+chai.use(require('chai-like'));
+const expect = chai.expect;
 const model = require('./planets');
 
 describe('Planets models', () => {
@@ -18,8 +20,27 @@ describe('Planets models', () => {
     expect(planets.length).greaterThan(0);
   })
 
-  it('should delete existing planets', async () => {
-    const deletedPlanet = await model.delete(mockPlanet._id);
-    expect(deletedPlanet).to.deep.equal(mockPlanet);
+  describe('should filter planets', () => {
+    it('by valid name', async () => {
+      const planets = await model.list({ name: mockPlanet.name });
+      expect(planets).to.be.like([mockPlanet]);
+    })
+
+    it('by unvalid name', async () => {
+      const planets = await model.list({ name: 'rock' });
+      expect(planets).to.be.empty;
+    })
+  })
+
+  it('should find planet by id', async () => {
+    const planet = await model.findById('0');
+    expect(planet).to.be.like(mockPlanet);
+  })
+
+  describe('after executing previous tests', () => {
+    it('should delete existing planets', async () => {
+      const deletedPlanet = await model.delete('0');
+      expect(deletedPlanet).to.deep.equal(mockPlanet);
+    })
   })
 });

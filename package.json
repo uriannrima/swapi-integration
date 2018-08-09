@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon index.js",
+    "test:all": "mocha --recursive **/*.spec.js",
     "test": "mocha --recursive"
   },
   "dependencies": {
