@@ -2,6 +2,9 @@ const PlanetModel = require('../../mongoose/models/planet');
 
 exports.list = async function (filter) {
   filter = filter || {};
+  if (filter.name) {
+    filter.name = new RegExp(`^${filter.name}`, 'i');
+  }
   return await PlanetModel.find(filter).lean();
 }
 

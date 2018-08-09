@@ -64,3 +64,16 @@ To run the API, execute:
 yarn dev
 npm run dev
 ```
+
+## REST API
+
+## Routes available:
+- Planets: 
+  - Used to create, list and delete planets.
+  - URL: /planet
+  - Verbs:
+    - POST: Create a new planet.
+    - GET: List all planets.
+      - /ID: Get specific planet.
+      - ?name=: Get planet filtered by name.
+    - DELETE/ID: Deletes a planet by id.

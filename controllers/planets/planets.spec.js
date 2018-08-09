@@ -21,7 +21,9 @@ describe('Planets controller', () => {
     async list(filter) {
       filter = filter || {};
       const { name } = filter;
-      if (name !== undefined) return this.planets.filter(planet => planet.name === name);
+      if (name !== undefined) {
+        return this.planets.filter(planet => planet.name.includes(name));
+      }
       return this.planets;
     },
     async delete(id) {
@@ -70,7 +72,7 @@ describe('Planets controller', () => {
   describe('should filter planets', () => {
     it('by valid name', (done) => {
       request(app)
-        .get('/planets?name=' + mockPlanet.name)
+        .get('/planets?name=' + mockPlanet.name.substring(0, 3))
         .expect(200)
         .then(response => {
           expect(response.body).to.be.like([mockPlanet]);

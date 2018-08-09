@@ -20,7 +20,9 @@ describe('Planets reposity', () => {
     async list(filter) {
       filter = filter || {};
       const { name } = filter;
-      if (name !== undefined) return this.planets.filter(planet => planet.name === name);
+      if (name !== undefined) {
+        return this.planets.filter(planet => planet.name.includes(name));
+      }
       return this.planets;
 
     },
@@ -49,7 +51,7 @@ describe('Planets reposity', () => {
 
   describe('should filter planets', () => {
     it('by valid name', async () => {
-      const planets = await repository.list({ name: mockPlanet.name });
+      const planets = await repository.list({ name: mockPlanet.name.substring(0, 3) });
       expect(planets).to.be.like([mockPlanet]);
     })
 

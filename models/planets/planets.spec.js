@@ -34,7 +34,7 @@ describe('Planets models', () => {
 
   describe('should filter planets', () => {
     it('by valid name', async () => {
-      const planets = await model.list({ name: mockPlanet.name });
+      const planets = await model.list({ name: mockPlanet.name.substring(0, 3) });
       expect(planets).to.be.like([mockPlanet]);
     })
 
